@@ -7,10 +7,13 @@
 
 		<link href="http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700|Open+Sans:400,600|Merriweather:400,400i,700,900" rel="stylesheet" type="text/css">
 
-		<!-- Add the slick-theme.css if you want default styling -->
-		<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick.css"/>
-		<!-- Add the slick-theme.css if you want default styling -->
-		<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick-theme.css"/>
+		<script type="text/javascript" src="script/modernizr.min.js"></script>
+
+		<script type="text/javascript" src="script/jquery-3.4.1.min.js"></script>
+
+		<script type="text/javascript" src="script/slick.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="style/slick.css" />
+		<link rel="stylesheet" type="text/css" href="style/slick-theme.css" />
 
 		<style type="text/css">
 			/* EMBEDDED STYLESHEET */
@@ -382,24 +385,24 @@
 			</section>
 			<section id="excerpts">
 				<div id="carousel-desktop" class="carousel">
-					<div class="leaf"><img src="image/PNB-Book-01-F8.gif" /></div>
-					<div class="spread"><img src="image/PNB-Book-01-F9.gif" /><img src="image/PNB-Book-01-F10.gif" /></div>
-					<div class="leaf"><img src="image/PNB-Book-01-F2.gif" /></div>
-					<div class="leaf"><img src="image/PNB-Book-01-F6.gif" /></div>
-					<div class="spread"><img src="image/PNB-Book-01-F13.gif" /><img src="image/PNB-Book-01-F14.gif" /></div>
-					<div class="spread"><img src="image/PNB-Book-01-F17.gif" /><img src="image/PNB-Book-01-F18.gif" /></div>
-					<div class="spread"><img src="image/PNB-Book-01-F19.gif" /><img src="image/PNB-Book-01-F20.gif" /></div>
-					<div class="leaf"><img src="image/PNB-Book-01-F22.gif" /></div>
+					<div class="leaf"><img data-lazy="image/PNB-Book-01-F8.gif" /></div>
+					<div class="spread"><img data-lazy="image/PNB-Book-01-F9.gif" /><img data-lazy="image/PNB-Book-01-F10.gif" /></div>
+					<div class="leaf"><img data-lazy="image/PNB-Book-01-F2.gif" /></div>
+					<div class="leaf"><img data-lazy="image/PNB-Book-01-F6.gif" /></div>
+					<div class="spread"><img data-lazy="image/PNB-Book-01-F13.gif" /><img data-lazy="image/PNB-Book-01-F14.gif" /></div>
+					<div class="spread"><img data-lazy="image/PNB-Book-01-F17.gif" /><img data-lazy="image/PNB-Book-01-F18.gif" /></div>
+					<div class="spread"><img data-lazy="image/PNB-Book-01-F19.gif" /><img data-lazy="image/PNB-Book-01-F20.gif" /></div>
+					<div class="leaf"><img data-lazy="image/PNB-Book-01-F22.gif" /></div>
 				</div>
 				<div id="carousel-mobile" class="carousel">
-					<div class="leaf"><img src="image/PNB-Book-01-F8.gif" /></div>
-					<div class="leaf left"><img src="image/PNB-Book-01-F13.gif" /></div>
-					<div class="leaf right"><img src="image/PNB-Book-01-F14.gif" /></div>
-					<div class="leaf"><img src="image/PNB-Book-01-F2.gif" /></div>
-					<div class="leaf"><img src="image/PNB-Book-01-F6.gif" /></div>
-					<div class="leaf left"><img src="image/PNB-Book-01-F19.gif" /></div>
-					<div class="leaf right"><img src="image/PNB-Book-01-F20.gif" /></div>
-					<div class="leaf"><img src="image/PNB-Book-01-F22.gif" /></div>
+					<div class="leaf"><img data-lazy="image/PNB-Book-01-F8.gif" /></div>
+					<div class="leaf left"><img data-lazy="image/PNB-Book-01-F13.gif" /></div>
+					<div class="leaf right"><img data-lazy="image/PNB-Book-01-F14.gif" /></div>
+					<div class="leaf"><img data-lazy="image/PNB-Book-01-F2.gif" /></div>
+					<div class="leaf"><img data-lazy="image/PNB-Book-01-F6.gif" /></div>
+					<div class="leaf left"><img data-lazy="image/PNB-Book-01-F19.gif" /></div>
+					<div class="leaf right"><img data-lazy="image/PNB-Book-01-F20.gif" /></div>
+					<div class="leaf"><img data-lazy="image/PNB-Book-01-F22.gif" /></div>
 				</div>
 			</section>
 			<section id="contents">
@@ -569,9 +572,6 @@
 		</article>
 	</body>
 	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="http://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#carousel-desktop').slick({
@@ -581,7 +581,8 @@
 				slidesToShow: 1,
 				centerMode: true,
 				variableWidth: true,
-				focusOnSelect: true
+				focusOnSelect: true,
+				lazyLoad: 'ondemand'
 			});
 
 			$('#carousel-mobile').slick({
@@ -592,7 +593,8 @@
 				centerMode: true,
 				variableWidth: true,
 				focusOnSelect: true,
-				arrows: false
+				arrows: false,
+				lazyLoad: 'ondemand'
 			});
 
 			$(window).resize();
