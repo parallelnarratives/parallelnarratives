@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html class="no-js">
+	<head>
+		<title>Parallel Narratives Volume 1</title>
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, max-scale=1.0">
+
+		<link href="http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700|Open+Sans:400,600|Merriweather:400,400i,700,900" rel="stylesheet" type="text/css">
+
+		<!-- Add the slick-theme.css if you want default styling -->
+		<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick.css"/>
+		<!-- Add the slick-theme.css if you want default styling -->
+		<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick-theme.css"/>
+
+		<style type="text/css">
+			/* EMBEDDED STYLESHEET */
+
+			* { color: rgba(0, 0, 0, .8); }
+			
+			body {
+				background-color: rgba(241, 240, 239, .5);
+				margin: 0;
+				padding: 0;
+				font-size: .85em;
+			}
+			
+			a[name="top"] { position: absolute; top: 0%; }
+
+			#main-nav { display: none; }
+			
+			article {
+				margin: 4em auto;
+			}
+
+			section { 
+				width: 480px;
+				max-width: calc(100% - 8em);
+				margin: 0em auto;
+			}
+			
+			h1 {
+				font-family: 'Ubuntu Mono', 'Monaco', 'Courier New', monospace;
+				font-weight: 400;
+				font-size: 1.375em;
+			}
+
+				h1 small { font-weight: 800; font-size: .625em; }
+				
+			#book-cover {
+				margin: 0;
+				width: 80%;
+				height: 0;
+				padding-bottom: 126.4%;
+				position: relative;
+				margin: 2em auto;
+			}
+
+				#book-cover img {
+					display: block;
+					position: absolute;
+					width: 104%;
+					height: 102.597%;
+					left: -2%;
+					top: -1.299%;
+				}
+
+			.book-specs {
+				display: block;
+				list-style: none;
+				overflow: auto;
+				font-family: 'Ubuntu Mono', 'Monaco', 'Courier New', monospace;
+				font-size: .9em;
+				line-height: 1.25em;
+			}
+
+				.book-specs dt {
+					font-weight: 800;
+					float: left;
+					clear: left;
+					width: 10em;
+				}
+
+				.book-specs dd {
+					float: left;
+					margin-left: .5em;
+				}
+
+			.copy {
+				clear: left;
+				/* width: 80%;
+				margin: 0 auto; */
+			}
+
+				.copy p {
+					font-family: 'Merriweather', serif !important;
+					font-size: .875em;
+					line-height: 2em;
+				}
+			
+			#book-purchase { text-align: center; margin: 2em 0; }
+
+				#book-purchase p {
+					font-family: 'Merriweather', serif !important;
+					font-style: italic;
+					font-size: .75em;
+					line-height: 2em;
+					width: 70%;
+					margin: 1em auto;
+				}
+
+				#book-purchase a {
+					display: inline-block;
+					-webkit-box-sizing: content-box;
+					box-sizing: content-box;
+					position: relative;
+					vertical-align: middle;
+					height: 1em;
+					padding: .75em 1em;
+					color: #39ABD6;
+					font-size: .9em;
+					font-family: 'Ubuntu Mono', 'Monaco', 'Courier New', monospace;
+					font-weight: 800;
+					line-height: 1em;
+					letter-spacing: .5px;
+					text-transform: uppercase;
+					text-decoration: none;
+					white-space: nowrap;
+					outline: none;
+					border: 2px solid #39ABD6;
+					border-radius: 1.25em;
+					background-color: transparent;
+					cursor: pointer;
+				}
+
+					#book-purchase a:hover {
+						color: white;
+						background-color: #39ABD6;
+					}
+
+			#excerpts {
+				width: 100%;
+				max-width: 100%;
+				overflow: hidden;
+				margin-top: 3em;
+				margin-bottom: 2em;
+			}
+
+				html.no-js #excerpts { display: none !important; }
+
+				.carousel .spread, .carousel .leaf {
+					display: block;
+					margin: 0em .5em;
+					outline: none;
+					position: relative;
+				}
+
+					.carousel .spread:after, .carousel .leaf:after {
+						display: block;
+						content: '';
+						box-sizing: border-box;
+						border: 1px solid rgba(0, 0, 0, .8);
+						position: absolute;
+						left: 0;
+						right: 0;
+						top: 0;
+						bottom: 0;
+						z-index: 10;
+					}
+
+					.carousel .spread:before {
+						display: block;
+						content: '';
+						width: 1px;
+						height: 100%;
+						box-sizing: border-box;
+						border-right: 1px dashed rgba(0, 0, 0, .8);
+						position: absolute;
+						left: 50%;
+						top: 0%;
+					}
+
+					.carousel .spread img, .carousel .leaf img {
+						display: block;
+						float: left;
+						height: 100%;
+						width: auto;
+						z-index: 0;
+					}
+
+				#carousel-mobile { display: none; }
+				#carousel-mobile .leaf:after { border-color: rgba(0, 0, 0, 0.5); }
+
+				.carousel .leaf.left { margin-right: 0em; }
+				.carousel .leaf.right { margin-left: 0em; }
+
+					.carousel .leaf.left:after { border-right: 1px dashed rgba(0, 0, 0, .8); }
+					.carousel .leaf.right:after { border-left-color: transparent !important; }
+				
+				.slick-arrow {
+					z-index: 10;
+					border-radius: 50%;
+					bottom: -2rem;
+					top: auto;
+				}
+					.slick-arrow:before {
+						font-size: 1.5rem;
+						font-family: 'Ubuntu Mono', 'Monaco', 'Courier New', monospace;
+						font-weight: 400;
+						color: black;
+					}
+					.slick-arrow:hover:before { color: #39ABD6; }
+				.slick-prev { left: calc(50% - 185px); }
+					.slick-prev:before { content: '«'; }
+				.slick-next { right: calc(50% - 185px); }
+					.slick-next:before { content: '»'; }
+
+				.slick-dots { position: relative; }
+					.slick-dots li { position: relative; }
+					.slick-dots li button {
+						box-sizing: border-box;
+						font-size: .75rem;
+						font-weight: 400;
+						font-family: 'Ubuntu Mono', 'Monaco', 'Courier New', monospace;
+						color: rgba(0, 0, 0, .8);
+					}
+					.slick-dots li.slick-active:after {
+							display: block;
+							content: '';
+							width: 100%;
+							top: 100%;
+							left: 0px;
+							border-bottom: 1px solid rgba(0, 0, 0, .8);
+						}
+					.slick-dots li:hover button { color: #39ABD6; }
+					.slick-dots li button:before { display: none; }
+
+			#press {
+				margin-top: 2em;
+				padding-top: 2em;
+				border-top: 1px solid rgba(0, 0, 0, .8);
+			}
+
+				#press .copy p { margin-top: 0em; }
+
+				#press ul {
+					list-style: none;
+					margin: 0em;
+					padding: 0em 1.5em;
+					line-height: 1.5em;
+				}
+
+				#press ul .item {
+					list-style: none;
+					margin: 1em 0em 1em 0em;
+					padding: 0em;
+					position: relative;
+					font-size: .875rem;
+				}
+
+				#press ul .item:before {
+					content: '*';
+					display: block;
+					position: absolute;
+					left: -1.5em;
+					top: calc(0em + 2px);
+				}
+
+				#press .item-title {
+					display: block;
+					margin-bottom: .2em;
+				}
+
+			#end-of-page {
+				display: block;
+				text-align: center;
+				font-family: 'Ubuntu Mono', 'Monaco', 'Courier New', monospace;
+				font-weight: 800;
+				text-transform: uppercase;
+				margin-top: 4em;
+			}
+
+				#end-of-page a {
+					padding-top: 2em;
+					text-decoration: none;
+					color: rgba(0, 0, 0, .8);
+					position: relative;
+				}
+
+				#end-of-page a:hover { color: #39ABD6; }
+
+				#end-of-page a:before {
+					display: block;
+					position: absolute;
+					left: 50%;
+					bottom: .5rem;
+					content:'«';
+					font-size: 3em;
+					font-weight: 400;
+					margin-left: -.1em;
+					transform: rotate(90deg);
+				}
+
+			@media only screen and (max-width: 540px) {
+				body { font-size: .75em; }
+
+				h1 small { display: none; }
+
+				article { margin: 2em auto 4em auto; }
+				
+				#book-cover { width: 100%; padding-bottom: 158%; }
+
+				.book-specs dt { width: auto; display}
+				.book-specs .spacer { display: none; }
+
+				#book-purchase p { width: 80%; font-size: .875em; margin-bottom: 2em; }
+
+				#carousel-desktop { display: none; }
+				#carousel-mobile { display: block; }
+			}
+
+			@media only screen and (max-width: 360px) {
+				section { max-width: calc(100% - 4em); }
+			}
+		</style>
+	</head>
+	<body>
+		<a name="top"></a>
+		<nav id="main-nav">
+			<span class="composite-link">
+				<a href="">The Book</a> (<a href="">Purchase</a>)
+			</span>
+			<a href="">Excerpt</a>
+			<a href="">Contents</a>
+			<a href="">Press</a>
+			<span class="composite-link">
+				<a href="">Participate</a> + <a href="">Donate</a>
+			</span>
+			<a href="">What's Next</a>
+			<a href="">Index</a>
+		</nav>
+		<article>
+			<section id="book">
+				<figure id="book-cover">
+					<img src="image/PNB1-Cover-FRONT.gif" alt="Parallel Narratives Vol. 1, Front Cover" />
+				</figure>
+				<h1>Parallel Narratives <small>(Volume 1)</small></h1>
+				<dl class="book-specs">
+					<dt><span class="spacer">————————— </span>Editors</dt>
+						<dd>Natalia Ilyin & Elisabeth Patterson</dd>
+					<dt>Designer/Producer</dt>
+						<dd>Robert Baxter</dd>
+					<dt><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Publisher</dt>
+						<dd>Cornish College of the Arts</dd>
+					<dt><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Date</dt>
+						<dd>June 1, 2019</dd>
+				</dl>
+				<div id="book-blurb" class="copy">
+					<p>This book is the result of an on-going undergraduate assignment that Natalia Ilyin and Elisabeth Patterson give in their co-taught, Junior-level course, <em>Parallel Narratives</em>, a class exploring the current state of design history and criticism. This class unearths and examines stories of design that did not gain entrance into the current, commonly-taught  “canon” of design history. (The reasons for these exclusions make valuable study in themselves.) </p>
+					<p>Juniors research and compile annotated bibliographies of 80-100 citations about a topic they believe has gone missing from the history books. They choose what they want to research, and the topics are varied. These bibliographies make a good starting point for research into design ideas, people and contexts.</p>
+					<p>We include the assignment itself in this volume, for the reference of instructors who would like to take on this project. We will be archiving these bibliographies online, and welcome participation from other institutions.</p>
+				</div>
+				<dl class="book-specs">
+					<dt><span class="spacer">—————————— </span>Format</dt>
+						<dd>Softcover 5×8 in.</dd>
+					<dt><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Extent</dt>
+						<dd>272 pp. 49 Illustrations</dd>
+					<dt><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>ISBN</dt>
+						<dd>978-1-7336828-0-0</dd>
+					<dt><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>LCCN</dt>
+						<dd><em>Pending</em></dd>
+				</dl>
+				<div id="book-purchase">
+					<p>Available for purchase online via PayPal. Books ship out within 1–2 weeks or can be picked up at Cornish College of the Arts.</p>
+					<!-- <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7BGVZUUD9KXQC">$23 + Tax/Shipping</a> -->
+					<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+						<input type="hidden" name="cmd" value="_s-xclick">
+						<input type="hidden" name="hosted_button_id" value="7BGVZUUD9KXQC">
+						<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+						<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+					</form>
+				</div>
+			</section>
+			<section id="excerpts">
+				<div id="carousel-desktop" class="carousel">
+					<div class="leaf"><img src="image/PNB-Book-01-F8.gif" /></div>
+					<div class="spread"><img src="image/PNB-Book-01-F9.gif" /><img src="image/PNB-Book-01-F10.gif" /></div>
+					<div class="leaf"><img src="image/PNB-Book-01-F2.gif" /></div>
+					<div class="leaf"><img src="image/PNB-Book-01-F6.gif" /></div>
+					<div class="spread"><img src="image/PNB-Book-01-F13.gif" /><img src="image/PNB-Book-01-F14.gif" /></div>
+					<div class="spread"><img src="image/PNB-Book-01-F17.gif" /><img src="image/PNB-Book-01-F18.gif" /></div>
+					<div class="spread"><img src="image/PNB-Book-01-F19.gif" /><img src="image/PNB-Book-01-F20.gif" /></div>
+					<div class="leaf"><img src="image/PNB-Book-01-F22.gif" /></div>
+				</div>
+				<div id="carousel-mobile" class="carousel">
+					<div class="leaf"><img src="image/PNB-Book-01-F8.gif" /></div>
+					<div class="leaf left"><img src="image/PNB-Book-01-F13.gif" /></div>
+					<div class="leaf right"><img src="image/PNB-Book-01-F14.gif" /></div>
+					<div class="leaf"><img src="image/PNB-Book-01-F2.gif" /></div>
+					<div class="leaf"><img src="image/PNB-Book-01-F6.gif" /></div>
+					<div class="leaf left"><img src="image/PNB-Book-01-F19.gif" /></div>
+					<div class="leaf right"><img src="image/PNB-Book-01-F20.gif" /></div>
+					<div class="leaf"><img src="image/PNB-Book-01-F22.gif" /></div>
+				</div>
+			</section>
+			<section id="contents">
+				<div id="book-contents" class="copy">
+					<p>This volume includes annotated bibliographies on these topics:</p>
+					<p><em>Colonialism, Appropriation, and Fetishization of Native Women in Design and Art: Angel DeCora, Tammy Garcia, Edmonia Lewis; Asian Female Designers; Tony Arefin and Associates; The Branded Image of Terrorist Organizations and State Propaganda; Corita Kent; Cuban Design; Girls, Girls, Girls: Their Impact on the Gaming Industry; The History of Emoji; The Graphic Language of Jazz; Hell on Earth: The Hiroshima and Nagasaki Bombings; The History of ID Software; Ivan Bilibin, Russian Illustrator; Kim Swoo Geun; Leica; Rob Liefeld and Comics in the ’90s; José Guadalupe Posada; Satoshi Tajiri, Pokémon Creator; Sulki and Min; The Swastika, Paganism and Mythology; Vietnamese Design; Design of the Tulalip Tribes; Women of Automotive Design; Through the Eyes of Design: A Focus on the Basque Country; Design of the Mexican Revolution; How West African Textiles Changed the Design World; Women and Contemporary Calligraphy; The Women of the Taller de Gráphica Popular.</em></p>
+				</div>
+			</section>
+			<!-- <section id="contents">
+				<span id="contents-blurb">Presented in alphabetical order by subject matter and title.</span>
+				<ol id="contents-table">
+					<li class="chapter">
+						<span class="chapter-author">Micaela Bartunek</span>
+						<span class="chapter-title">Angel DeCora, Tammy Garcia, Edmonia Lewis</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Phuong Sen</span>
+						<span class="chapter-title">Asian Female Designers</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Jaden Nethercott</span>
+						<span class="chapter-title">Tony Arefin & Associates</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Dillon Edwards</span>
+						<span class="chapter-title">The Branded Image of Terrorist Organizations and State Propaganda</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Brittaney Drake</span>
+						<span class="chapter-title">Corita Kent</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Kyle Leitch</span>
+						<span class="chapter-title">La Cubanidad</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Caiti Woodward</span>
+						<span class="chapter-title">Girls, Girls, Girls</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Ashley White</span>
+						<span class="chapter-title">The History of Emoji</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Taejin Um</span>
+						<span class="chapter-title">The Graphic Language of Jazz</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Sydney Chavan</span>
+						<span class="chapter-title">Hell on Earth</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Janessa Corse</span>
+						<span class="chapter-title">The History of ID Software</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Amanda Marsh</span>
+						<span class="chapter-title">Ivan Bilibin</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Austin Hwang</span>
+						<span class="chapter-title">Kim Swoo Geun</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Dominic Gracyalny</span>
+						<span class="chapter-title">Leica</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Lindsey Moore</span>
+						<span class="chapter-title">Rob Liefeld and Comics in the ’90s</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Matthew Rice</span>
+						<span class="chapter-title">José Guadalupe Posada</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Jason DeZarn</span>
+						<span class="chapter-title">⽥尻 智</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Vivian Hyon</span>
+						<span class="chapter-title">Sulki & Min</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Elsa Adkins</span>
+						<span class="chapter-title">The Swastika, Paganism, and Mythology</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Kevin Bui</span>
+						<span class="chapter-title">Thiê´t kê´ Viê·t</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Céline Besson</span>
+						<span class="chapter-title">Design of the Tulalip Tribes</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Morgan Elrod</span>
+						<span class="chapter-title">Women of Automotive Design</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Mallory Gelineau-Fox</span>
+						<span class="chapter-title">Through the Eyes of Design</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Nikki Schaidt</span>
+						<span class="chapter-title">¡Viva la Revolución!</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Amina Maya</span>
+						<span class="chapter-title">How West African Textiles Changed</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">the Design World</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Caitlin O’Bryant</span>
+						<span class="chapter-title">Women & Contemporary Calligraphy</span>
+					</li>
+					<li class="chapter">
+						<span class="chapter-author">Maria Paz</span>
+						<span class="chapter-title">The Women of the Taller de Gráfica Popular</span>
+					</li>
+				</ol>
+			</section> -->
+			<section id="press">
+				<div id="more-info" class="copy">
+					<p>For more information, or to participate in this project, email us at <a href="mailto:editor@parallelnarrativ.es">editor@parallelnarrativ.es</a> or learn about the project at:</p>
+				</div>
+				<ul>
+					<li class="item">
+						<a class="item-title" href="https://www.gofundme.com/help-publish-my-students-book">Parallel Narratives GoFundMe Campaign</a>
+						<span class="item-annotation">The crowdfunding project that supported the editing and production of this first volume (still open for donations).</span>
+					</li>
+					<li class="item">
+						<a class="item-title" href="https://scratchingthesurface.fm/post/184566482920/120-natalia-ilyin">Scratching the Surface — 120. Natalia Ilyin</a>
+						<span class="item-annotation">Jarrett Fuller interviews Natalia Ilyin for the <em>Scratching the Surface</em> podcast, in which she discusses this project in the context of writing, teaching, and design history.</span>
+					</li>
+				</ul>
+			</section>
+			<nav id="end-of-page">
+				<a href="#top">Back to Top</a>
+			</nav>
+			<!-- <section id="participate">
+				<div id="participate-curriculum" class="copy">
+					<p>The goal of the Parallel Narratives assignment and publication project is to promote a widening of the design history conversation. Rather than using a top-down model, filtered by one or two historians, we’re employing a grassroots approach to the initial collection of research. This information is unfiltered and structurally unedited, although, for the sake of readability, it is given an initial copyedit. Capturing topics of interest and entry points to these “parallel narratives” is our whole goal. What researchers build with this information, what connections they find, and how the topics change and grow over time is not in our control or dominion.</p>
+					<p>Most important to us is that we foster collaboration on this archive with other college and university undergraduate design history classes, courses, and programs, and with independent scholar collaborators.</p>
+					<p>After the publication of our first volume, we will begin the process of creating a flexible, searchable database in which every year of research will be archived, and which will make clear what areas of research are becoming populated, and where there are gaps and opportunities for further exploration.</p>
+					<p>We look forward to welcoming you to the project. Please contact us at <a href="mailto:editor@parallelnarrativ.es">editor@parallelnarrativ.es</a> for more information about assigning the project, what the parameters for contribution to our database are, and our submission and editorial process.</p>
+					<a href="">Download the Curriculum</a>
+				</div>
+				<div id="participate-donate">
+					<p></p>
+					<a>Donate via PayPal.</a>
+				</div>
+			</section> -->
+			<!-- <section id="future">
+				<p></p>
+			</section>
+			<section id="index">
+				<div id="index-blurb"></div>
+				<ol id="index-list">
+					<li class="index-entry first">
+						<span class="entry-term"></span>. <span class="entry-location">24, <em>26</em>, <u>30</u></span>
+					</li>
+				</ol>
+			</section> -->
+		</article>
+	</body>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="http://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#carousel-desktop').slick({
+				dots: true,
+				infinite: true,
+				speed: 300,
+				slidesToShow: 1,
+				centerMode: true,
+				variableWidth: true,
+				focusOnSelect: true
+			});
+
+			$('#carousel-mobile').slick({
+				dots: true,
+				infinite: true,
+				speed: 300,
+				slidesToShow: 1,
+				centerMode: true,
+				variableWidth: true,
+				focusOnSelect: true,
+				arrows: false
+			});
+
+			$(window).resize();
+		});
+
+		const PORTION = .8;
+		const MAX_SPREAD = 800;
+		const MAX_LEAF = 320;
+
+		$(window).resize(function() {
+			var width = $(window).innerWidth();
+			var height = $(window).innerHeight()
+			var spread = Math.min(width * PORTION, MAX_SPREAD);
+			var leaf = spread * .5;
+
+			$("#carousel-desktop .spread").css({ "width": spread, "height": spread * .8 });
+			$("#carousel-desktop .leaf").css({ "width": leaf, "height": leaf * 1.6 });
+
+			leaf = Math.min(width * PORTION, MAX_LEAF);
+
+			$("#carousel-mobile .leaf").css({ "width": leaf, "height": leaf * 1.6 });
+
+		})
+	</script>
+</html>
